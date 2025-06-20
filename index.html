@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pill Soccer – Play the Wacky 2-Player Soccer Showdown Online</title>
+    <meta name="description" content="Kick off comedy football with pill-shaped players, fast 1-v-1 action, tournaments, customization, and power-ups — all free in your desktop browser.">
+    <link rel="canonical" href="https://www.pillsoccergame.com/">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" sizes="32x32">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
+    <link rel="manifest" href="/manifest.webmanifest">
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'apple-blue': '#007AFF',
+                        'apple-green': '#34C759',
+                        'apple-gray': '#F2F2F7'
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Schema.org VideoGame JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "VideoGame",
+        "name": "Pill Soccer",
+        "description": "Wacky 2-player soccer game with pill-shaped players, tournaments, and power-ups",
+        "datePublished": "2024",
+        "applicationPlatform": "Web browser",
+        "url": "https://www.pillsoccergame.com/",
+        "image": "https://www.pillsoccergame.com/apple-touch-icon.png",
+        "genre": "Sports Game",
+        "playMode": "MultiPlayer",
+        "operatingSystem": "Any"
+    }
+    </script>
+</head>
+<body class="bg-apple-gray min-h-screen font-sans">
+    <!-- Header Section -->
+    <header class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="text-center">
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-4">
+                    Pill Soccer
+                </h1>
+                <p class="text-xl sm:text-2xl text-apple-blue font-medium">
+                    Score, customize, and conquer the pitch!
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Game Introduction -->
+        <section class="mb-12">
+            <div class="bg-white rounded-2xl shadow-lg p-6 sm:p-8 lg:p-10">
+                <p class="text-lg leading-relaxed text-gray-700 mb-8">
+                    Welcome to Pill Soccer, the hilarious twist on classic football that's taking the gaming world by storm! 
+                    Experience lightning-fast 2-player matches with uniquely pill-shaped characters that bounce, roll, and 
+                    score in the most unexpected ways. Dive into thrilling tournaments, unlock countless customization options, 
+                    and unleash game-changing power-ups that will keep you on the edge of your seat. Whether you're playing 
+                    solo or challenging friends, Pill Soccer delivers non-stop entertainment right in your browser – no downloads required!
+                </p>
+
+                <!-- Game Iframe -->
+                <div id="gameContainer" class="relative">
+                    <iframe 
+                        id="gameFrame"
+                        src="https://cloud.onlinegames.io/games/2024/gm/games3/pill-soccer/index.html"
+                        title="Pill Soccer Game"
+                        loading="lazy"
+                        class="w-full h-[70vh] rounded-2xl shadow-lg border-0"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+
+
+            </div>
+        </section>
+
+        <!-- How to Play Section -->
+        <section class="mb-12">
+            <div class="bg-white rounded-2xl shadow-lg p-6 sm:p-8 lg:p-10">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">How to Play</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-semibold text-apple-blue mb-3">Basic Gameplay</h3>
+                        <ul class="space-y-2 text-gray-700">
+                            <li>• Control your pill-shaped player with smooth physics</li>
+                            <li>• Score goals by getting the ball into opponent's net</li>
+                            <li>• First to reach the score limit wins the match</li>
+                            <li>• Use walls and bounces to your advantage</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-apple-green mb-3">Advanced Tips</h3>
+                        <ul class="space-y-2 text-gray-700">
+                            <li>• Master the art of ball control and positioning</li>
+                            <li>• Time your jumps perfectly for aerial plays</li>
+                            <li>• Collect power-ups for temporary advantages</li>
+                            <li>• Practice different shooting angles</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Game Modes Section -->
+        <section class="mb-12">
+            <div class="bg-white rounded-2xl shadow-lg p-6 sm:p-8 lg:p-10">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">Game Modes</h2>
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-apple-gray rounded-xl p-6">
+                        <h3 class="text-xl font-semibold text-apple-blue mb-3">Quick Match</h3>
+                        <p class="text-gray-700">Jump right into a fast-paced 1v1 soccer battle with default settings.</p>
+                    </div>
+                    <div class="bg-apple-gray rounded-xl p-6">
+                        <h3 class="text-xl font-semibold text-apple-green mb-3">Tournament</h3>
+                        <p class="text-gray-700">Compete in structured tournaments and climb the championship ladder.</p>
+                    </div>
+                    <div class="bg-apple-gray rounded-xl p-6">
+                        <h3 class="text-xl font-semibold text-purple-600 mb-3">Custom Game</h3>
+                        <p class="text-gray-700">Create your own rules, customize players, and enable special power-ups.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Controls Section -->
+        <section class="mb-12">
+            <div class="bg-white rounded-2xl shadow-lg p-6 sm:p-8 lg:p-10">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">Controls</h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-semibold text-apple-blue mb-4">Player 1</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center">
+                                <kbd class="bg-gray-100 px-3 py-1 rounded font-mono text-sm mr-3">W A S D</kbd>
+                                <span class="text-gray-700">Move & Jump</span>
+                            </div>
+                            <div class="flex items-center">
+                                <kbd class="bg-gray-100 px-3 py-1 rounded font-mono text-sm mr-3">Space</kbd>
+                                <span class="text-gray-700">Special Action</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-apple-green mb-4">Player 2</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center">
+                                <kbd class="bg-gray-100 px-3 py-1 rounded font-mono text-sm mr-3">Arrow Keys</kbd>
+                                <span class="text-gray-700">Move & Jump</span>
+                            </div>
+                            <div class="flex items-center">
+                                <kbd class="bg-gray-100 px-3 py-1 rounded font-mono text-sm mr-3">Enter</kbd>
+                                <span class="text-gray-700">Special Action</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tips & Tricks Section -->
+        <section class="mb-12">
+            <div class="bg-white rounded-2xl shadow-lg p-6 sm:p-8 lg:p-10">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">Tips & Tricks</h2>
+                <div class="grid lg:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-semibold text-apple-blue mb-4">Offensive Strategies</h3>
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-start">
+                                <span class="text-apple-green mr-2">✓</span>
+                                Use wall bounces to surprise your opponent
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-apple-green mr-2">✓</span>
+                                Time your shots when the goalkeeper is out of position
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-apple-green mr-2">✓</span>
+                                Master aerial control for spectacular goals
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold text-apple-blue mb-4">Defensive Tactics</h3>
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-start">
+                                <span class="text-apple-green mr-2">✓</span>
+                                Stay between the ball and your goal
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-apple-green mr-2">✓</span>
+                                Use quick movements to intercept passes
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-apple-green mr-2">✓</span>
+                                Clear the ball to safety when under pressure
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="mb-12">
+            <div class="bg-white rounded-2xl shadow-lg p-6 sm:p-8 lg:p-10">
+                <h2 class="text-3xl font-bold text-gray-900 mb-6">FAQ</h2>
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-lg font-semibold text-apple-blue mb-2">Is Pill Soccer free to play?</h3>
+                        <p class="text-gray-700">Yes! Pill Soccer is completely free to play in your web browser. No downloads or installations required.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-apple-blue mb-2">Can I play with friends?</h3>
+                        <p class="text-gray-700">Absolutely! Pill Soccer supports local 2-player multiplayer on the same device using different control schemes.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-apple-blue mb-2">What browsers are supported?</h3>
+                        <p class="text-gray-700">Pill Soccer works on all modern web browsers including Chrome, Firefox, Safari, and Edge on both desktop and mobile devices.</p>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold text-apple-blue mb-2">Are there different difficulty levels?</h3>
+                        <p class="text-gray-700">Yes, you can adjust game settings and choose from various tournament difficulties to match your skill level.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="text-center text-gray-600">
+                <p>&copy; 2024 Pill Soccer Game. All rights reserved.</p>
+                <p class="mt-2 text-sm">Experience the most entertaining soccer game in your browser!</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Game Controls -->
+    <script>
+        // Fullscreen functionality for game container
+        function requestFullscreen() {
+            const container = document.getElementById('gameContainer');
+            const iframe = document.getElementById('gameFrame');
+            
+            try {
+                // First try to make the container fullscreen
+                if (container.requestFullscreen) {
+                    container.requestFullscreen();
+                } else if (container.mozRequestFullScreen) {
+                    container.mozRequestFullScreen();
+                } else if (container.webkitRequestFullscreen) {
+                    container.webkitRequestFullscreen();
+                } else if (container.msRequestFullscreen) {
+                    container.msRequestFullscreen();
+                } else {
+                    // Fallback: open in new tab if fullscreen not supported
+                    openInNewTab();
+                    return;
+                }
+                
+                // Adjust iframe size for fullscreen
+                iframe.style.height = '100vh';
+                iframe.style.borderRadius = '0';
+                
+            } catch (error) {
+                console.log('Fullscreen failed, opening in new tab:', error);
+                openInNewTab();
+            }
+        }
+        
+        // Open game in new tab for better fullscreen experience
+        function openInNewTab() {
+            const gameUrl = 'https://cloud.onlinegames.io/games/2024/gm/games3/pill-soccer/index.html';
+            window.open(gameUrl, '_blank', 'width=1200,height=800,scrollbars=no,toolbar=no,menubar=no');
+        }
+        
+        // Handle fullscreen exit
+        document.addEventListener('fullscreenchange', function() {
+            const iframe = document.getElementById('gameFrame');
+            if (!document.fullscreenElement) {
+                // Reset iframe size when exiting fullscreen
+                iframe.style.height = '';
+                iframe.style.borderRadius = '';
+            }
+        });
+        
+        // Handle webkit fullscreen exit (Safari)
+        document.addEventListener('webkitfullscreenchange', function() {
+            const iframe = document.getElementById('gameFrame');
+            if (!document.webkitFullscreenElement) {
+                iframe.style.height = '';
+                iframe.style.borderRadius = '';
+            }
+        });
+        
+        // Handle moz fullscreen exit (Firefox)
+        document.addEventListener('mozfullscreenchange', function() {
+            const iframe = document.getElementById('gameFrame');
+            if (!document.mozFullScreenElement) {
+                iframe.style.height = '';
+                iframe.style.borderRadius = '';
+            }
+        });
+
+        // Optimize loading performance
+        document.addEventListener('DOMContentLoaded', function() {
+            // Lazy loading is already implemented via loading="lazy" attribute
+            // For production: Consider implementing Tailwind JIT compilation and content purging
+            // to reduce CSS bundle size and improve loading performance
+            
+            // Add click handler to iframe for better user experience
+            const iframe = document.getElementById('gameFrame');
+            iframe.addEventListener('load', function() {
+                console.log('Game loaded successfully');
+            });
+            
+            iframe.addEventListener('error', function() {
+                console.error('Game failed to load');
+                // Could add fallback game URL here
+            });
+        });
+    </script>
+</body>
+</html> 
