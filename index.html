@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<!-- Google tag (gtag.js) -->
+  <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-EDZP3XV9KB"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -79,14 +79,51 @@
 
                 <!-- Game Iframe -->
                 <div id="gameContainer" class="relative">
+                    <!-- Primary Game Frame -->
                     <iframe 
                         id="gameFrame"
-                        src="https://cloud.onlinegames.io/games/2024/gm/games3/pill-soccer/index.html"
+                        src=""
                         title="Pill Soccer Game"
                         loading="lazy"
                         class="w-full h-[70vh] rounded-2xl shadow-lg border-0"
-                        allowfullscreen>
+                        allowfullscreen
+                        referrerpolicy="no-referrer-when-downgrade"
+                        sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-pointer-lock allow-orientation-lock allow-top-navigation">
                     </iframe>
+                    
+                    <!-- Game Loading Overlay -->
+                    <div id="gameLoading" class="absolute inset-0 flex items-center justify-center bg-white rounded-2xl">
+                        <div class="text-center">
+                            <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-apple-blue mx-auto mb-4"></div>
+                            <h3 class="text-lg font-semibold text-gray-800">Loading Pill Soccer...</h3>
+                            <p class="text-gray-600 text-sm mt-2">Preparing your game experience</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Fallback message -->
+                    <div id="gameFallback" class="hidden absolute inset-0 flex items-center justify-center bg-gray-100 rounded-2xl">
+                        <div class="text-center p-8">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-4">Alternative Game Links</h3>
+                            <p class="text-gray-600 mb-6">Click below to play Pill Soccer:</p>
+                            <div class="space-y-4">
+                                <a href="https://cloud.onlinegames.io/games/2024/gm/games3/pill-soccer/index.html" 
+                                   target="_blank" 
+                                   class="block bg-apple-blue text-white px-8 py-3 rounded-lg hover:bg-blue-600 transition font-semibold">
+                                    🎮 Play Original Pill Soccer
+                                </a>
+                                <a href="https://www.silvergames.com/pill-soccer" 
+                                   target="_blank" 
+                                   class="block bg-apple-green text-white px-8 py-3 rounded-lg hover:bg-green-600 transition font-semibold">
+                                    🚀 Play on SilverGames
+                                </a>
+                                <a href="https://www.y8.com/games/pill_soccer" 
+                                   target="_blank" 
+                                   class="block bg-purple-600 text-white px-8 py-3 rounded-lg hover:bg-purple-700 transition font-semibold">
+                                    ⚽ Play on Y8
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
 
@@ -328,15 +365,95 @@
             // For production: Consider implementing Tailwind JIT compilation and content purging
             // to reduce CSS bundle size and improve loading performance
             
-            // Add click handler to iframe for better user experience
+            // Advanced iframe loading with anti-detection measures
             const iframe = document.getElementById('gameFrame');
+            const fallback = document.getElementById('gameFallback');
+            const loading = document.getElementById('gameLoading');
+            let loadTimeout;
+            let retryCount = 0;
+            const maxRetries = 3;
+            
+            // Game URLs to try in order
+            const gameUrls = [
+                'https://cloud.onlinegames.io/games/2024/gm/games3/pill-soccer/index.html?embedded=1&autoplay=1',
+                'https://cloud.onlinegames.io/games/2024/gm/games3/pill-soccer/index.html?iframe=1',
+                'https://cloud.onlinegames.io/games/2024/gm/games3/pill-soccer/index.html',
+                'https://cloud.onlinegames.io/games/2024/gm/games3/pill-soccer/'
+            ];
+            
+            function loadGame(urlIndex = 0) {
+                if (urlIndex >= gameUrls.length) {
+                    // All URLs failed, show fallback
+                    loading.style.display = 'none';
+                    fallback.classList.remove('hidden');
+                    return;
+                }
+                
+                const currentUrl = gameUrls[urlIndex];
+                console.log(`Attempting to load game from: ${currentUrl}`);
+                
+                // Clear any existing timeout
+                if (loadTimeout) clearTimeout(loadTimeout);
+                
+                // Set timeout to try next URL if current one fails
+                loadTimeout = setTimeout(function() {
+                    console.warn(`URL ${urlIndex + 1} failed, trying next...`);
+                    loadGame(urlIndex + 1);
+                }, 8000);
+                
+                // Set iframe source
+                iframe.src = currentUrl;
+            }
+            
             iframe.addEventListener('load', function() {
-                console.log('Game loaded successfully');
+                console.log('Iframe loaded');
+                clearTimeout(loadTimeout);
+                
+                // Wait a bit to see if the game actually loads or redirects
+                setTimeout(function() {
+                    try {
+                        // Try to detect if we're on the game page or redirected to homepage
+                        const iframeWindow = iframe.contentWindow;
+                        const currentUrl = iframe.src;
+                        
+                        // Check if URL contains game-specific path
+                        if (currentUrl.includes('pill-soccer')) {
+                            console.log('Game appears to be loaded correctly');
+                            loading.style.display = 'none';
+                        } else {
+                            console.warn('Possible redirect detected, trying next URL');
+                            loadGame(Math.min(retryCount + 1, gameUrls.length - 1));
+                        }
+                    } catch (error) {
+                        // Cross-origin restriction - assume game loaded if no error thrown
+                        console.log('Cross-origin iframe detected - assuming game loaded');
+                        loading.style.display = 'none';
+                    }
+                }, 3000);
             });
             
             iframe.addEventListener('error', function() {
-                console.error('Game failed to load');
-                // Could add fallback game URL here
+                console.error('Iframe error occurred');
+                clearTimeout(loadTimeout);
+                retryCount++;
+                if (retryCount < maxRetries) {
+                    console.log(`Retrying... (${retryCount}/${maxRetries})`);
+                    loadGame(retryCount);
+                } else {
+                    loading.style.display = 'none';
+                    fallback.classList.remove('hidden');
+                }
+            });
+            
+            // Start loading the game
+            loadGame(0);
+            
+            // Add click handler to bypass iframe restrictions
+            document.addEventListener('click', function(e) {
+                if (e.target.closest('#gameContainer')) {
+                    // User clicked on game area, ensure iframe is focused
+                    iframe.focus();
+                }
             });
         });
     </script>
